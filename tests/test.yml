@@ -1,0 +1,14 @@
+---
+- hosts: all
+  become: yes
+  vars:
+    netdata_config:
+      global:
+        history: 7200
+      "plugin:apps":
+        update every: 1
+      "plugin:proc":
+        /proc/net/snmp: "no"
+        /proc/net/snmp6: "no"
+  roles:
+    - netdata-binary

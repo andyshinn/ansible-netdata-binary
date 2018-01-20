@@ -1,0 +1,41 @@
+---
+- name: set a default version when no fact
+  set_fact:
+    netdata_version_fact: 0.0.0
+  when: ansible_local.netdata is undefined
+
+- name: set version to fact when present
+  set_fact:
+    netdata_version_fact: "{{ ansible_local.netdata.version }}"
+  when: ansible_local.netdata is defined
+
+- name: download Netdata binary installer
+  get_url:
+    url: "https://github.com/firehol/binary-packages/raw/master/netdata-{{ netdata_version }}.gz.run"
+    dest: "{{ netdata_download_dir }}/netdata-{{ netdata_version }}.gz.run"
+    mode: "ugo+x"
+  when: netdata_version != netdata_version_fact
+
+- name: install Netdata
+  command: "{{ netdata_download_dir }}/netdata-{{ netdata_version }}.gz.run --accept -- {{ netdata_installer_options }}"
+  when: netdata_version != netdata_version_fact
+
+- name: configure Netdata
+  template:
+    src: netdata.conf.j2
+    dest: "{{ netdata_config_dir }}/netdata.conf"
+    owner: netdata
+    group: netdata
+  notify: restart netdata
+  when: netdata_config
+
+- name: "create custom fact directory"
+  file:
+    path: "/etc/ansible/facts.d"
+    state: "directory"
+
+- name: "set netdata_version fact"
+  copy:
+    content: "{\"version\":\"{{ netdata_version }}\"}"
+    dest: /etc/ansible/facts.d/netdata.fact
+    mode: 0644

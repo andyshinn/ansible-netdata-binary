@@ -1,0 +1,4 @@
+---
+netdata_version: v1.9.0-237-g10561d5a-x86_64-20180120-053010
+netdata_download_dir: /tmp
+netdata_installer_options: ""
