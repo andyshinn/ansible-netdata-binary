@@ -1,4 +1,4 @@
 ---
-netdata_version: netdata-v1.10.0-197-g7da8ccfe-x86_64-20180607-042843
+netdata_version: v1.10.0-197-g7da8ccfe-x86_64-20180607-042843
 netdata_download_dir: /tmp
 netdata_installer_options: ""

@@ -1,0 +1,35 @@
+---
+port:
+  tcp:19999:
+    listening: true
+    ip:
+      - 0.0.0.0
+netdata:
+  sshd:
+    enabled: true
+    running: true
+user:
+  netdata:
+    exists: true
+    uid: 999
+    gid: 999
+    groups:
+      - netdata
+    home: /opt/netdata
+    shell: /usr/sbin/nologin
+group:
+  netdata:
+    exists: true
+    gid: 999
+process:
+  netdata:
+    running: true
+file:
+  /opt/netdata/etc/netdata/netdata.conf:
+    exists: true
+    mode: "0664"
+    owner: netdata
+    group: netdata
+    filetype: file
+    contains:
+      - history = 7200
