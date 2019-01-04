@@ -1,0 +1,9 @@
+steps:
+  - command: |
+      apt-get update -q
+      apt-get install -qy python-pip
+      pip install -r requirements.txt
+    label: ":wrench: Setup"
+
+  - command: "molecule test"
+    label: ":llama: Test"
