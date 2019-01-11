@@ -14,7 +14,7 @@ steps:
       - molecule test
     plugins:
       - docker#v2.1.0:
-          image: "ubuntu:18.04"
+          image: "builder_ansible"
           workdir: "/app"
           volumes:
             - ".:/app"
