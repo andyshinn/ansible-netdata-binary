@@ -19,4 +19,5 @@ steps:
           volumes:
             - ".:/app"
             - "/var/run/docker.sock:/var/run/docker.sock"
+          propagate-environment: true
     label: ":llama: Test"
