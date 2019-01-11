@@ -19,5 +19,6 @@ steps:
           volumes:
             - ".:/app"
             - "/var/run/docker.sock:/var/run/docker.sock"
-          propagate-environment: true
+          environment:
+            - "BUILDKITE_BUILD_CHECKOUT_PATH=/app"
     label: ":llama: Test"
