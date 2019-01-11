@@ -1,10 +1,15 @@
 ---
 steps:
-  - command: |
-      apt-get update -q
-      apt-get install -qy python-pip
-      pip install -r requirements.txt
-    label: ":wrench: Setup"
-
-  - command: "molecule test"
+  - command:
+    - apt-get update -q
+    - apt-get install -qy python-pip docker.io
+    - pip install -r requirements.txt
+    - molecule test
+    plugins:
+      - docker#v2.1.0:
+          image: "ubuntu:18.04"
+          workdir: "/app"
+          volumes:
+            - ".:/app"
+            - "/var/run/docker.sock:/var/run/docker.sock"
     label: ":llama: Test"
