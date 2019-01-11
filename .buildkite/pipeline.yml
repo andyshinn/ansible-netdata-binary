@@ -9,6 +9,7 @@ steps:
           volumes:
             - ".:/app"
             - "/var/run/docker.sock:/var/run/docker.sock"
+  - wait
   - commands:
       - molecule test
     plugins:
