@@ -2,7 +2,7 @@
 
 {% for config in netdata_config %}
 [{{ config }}]
-  {% for key, value in netdata_config[config].iteritems() %}
+  {% for key, value in netdata_config[config].items() %}
     {{ key }} = {{ value }}
   {% endfor %}
 

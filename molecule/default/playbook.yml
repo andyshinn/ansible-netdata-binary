@@ -1,8 +1,10 @@
 ---
 - name: Converge
   hosts: all
+  vars:
+    role_name: "{{ lookup('env', 'BUILDKITE_BUILD_CHECKOUT_PATH') | default('ansible-netdata-binary', true) }}"
   roles:
-    - role: ansible-netdata-binary
+    - role: "{{ role_name }}"
       netdata_config:
         global:
           history: 7200
