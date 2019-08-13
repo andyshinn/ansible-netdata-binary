@@ -11,7 +11,7 @@
 
 - name: download Netdata binary installer
   get_url:
-    url: "https://github.com/firehol/binary-packages/raw/master/netdata-{{ netdata_version }}.gz.run"
+    url: "https://github.com/netdata/netdata/releases/download/{{ netdata_version }}/netdata-{{ netdata_version }}.gz.run"
     dest: "{{ netdata_download_dir }}/netdata-{{ netdata_version }}.gz.run"
     mode: "ugo+x"
   when: netdata_version != netdata_version_fact

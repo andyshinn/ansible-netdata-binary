@@ -16,7 +16,6 @@ user:
     groups:
       - netdata
     home: /opt/netdata
-    shell: /usr/sbin/nologin
 group:
   netdata:
     exists: true
