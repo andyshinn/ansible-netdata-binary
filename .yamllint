@@ -1,5 +1,5 @@
 extends: default
-
+ignore: .direnv
 rules:
   braces:
     max-spaces-inside: 1
