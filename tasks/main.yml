@@ -27,7 +27,7 @@
     owner: netdata
     group: netdata
   notify: restart netdata
-  when: netdata_config
+  when: netdata_config is defined
 
 - name: "create custom fact directory"
   file:
