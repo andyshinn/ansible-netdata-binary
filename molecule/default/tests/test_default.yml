@@ -26,7 +26,7 @@ process:
 file:
   /opt/netdata/etc/netdata/netdata.conf:
     exists: true
-    mode: "0664"
+    mode: "0644"
     owner: netdata
     group: netdata
     filetype: file

@@ -1,4 +1,4 @@
 ---
-netdata_version: v1.16.0
+netdata_version: v1.21.1
 netdata_download_dir: /tmp
 netdata_installer_options: ""
