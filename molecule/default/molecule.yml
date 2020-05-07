@@ -16,6 +16,9 @@ platforms:
     command: /sbin/init
 provisioner:
   name: ansible
+  config_options:
+    defaults:
+      interpreter_python: auto_silent
   lint:
     name: ansible-lint
 scenario:
